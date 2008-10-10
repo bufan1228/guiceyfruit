@@ -1,4 +1,5 @@
 #summary How to do it with Guice 1.0
+#labels Featured
 
 An incomplete FAQ explaining how to accomplish various tasks using Guice 1.0.
 
