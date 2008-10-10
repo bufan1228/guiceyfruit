@@ -1,0 +1,36 @@
+#summary Guice best practices
+
+= Field vs. method vs. constructor injection =
+
+Field injection
+   * + Most compact syntax (good for a trivial custom provider, e.g.)
+   * - Can't take any special action upon injection
+   * - Your class is not testable!
+
+Method injection
+   * + Isn't field injection
+   * + Only thing that works for some strange edge cases
+
+Constructor injection
+   * + Fields can be final!
+   * + Injection cannot possibly have been skipped, even if Guice is not in the picture
+   * + Easy to see dependencies at a glance
+   * + It's what the idea of construction is all about
+   * - No optional injections
+   * - Useless when Guice can't do instantiation itself, e.g. a servlet
+   * - Subclasses need to "know about" the injections needed by their superclasses
+   * - Less convenient for tests that only "care about" one of the parameters
+
+= Choosing a scope =
+
+   * If the object is stateless and inexpensive - then who cares?
+   * If the object is stateful, it should hopefully be obvious
+      * But you may have to write a custom scope yourself
+   * Never use Singleton or SessionScoped on a class that isn't thread-safe!
+   * For @RequestScoped and "no scope", you don't have to worry about concurrent access.
+   * Singleton exists primarily for two types of objects
+      * Ones that are expensive to construct
+      * Ones that tie up resources (e.g., a connection pool)
+   * Session scope is overrated
+      * Usually replaceable by conversation scope (Bob, hurry up and write that!)
+      * If you want to cache something, use a cache!
