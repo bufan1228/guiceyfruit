@@ -6,4 +6,4 @@
   * http://www.infoq.com/news/2007/03/guice
   * http://crazybob.org/2007/03/guice-10.html
   * http://forum.springframework.org/showthread.php?t=35768
-
+  * http://www.artima.com/forums/flat.jsp?forum=270&thread=198371
