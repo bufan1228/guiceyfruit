@@ -1,3 +1,0 @@
-#summary Links to other DI-related sites.
-  * [http://www.martinfowler.com/articles/injection.html Martin Fowler on Dependency Injection]
-  * [http://jroller.com/page/rickard/20040814#dependency_injection_and_open_vs Rickard on open vs. closed designs]
