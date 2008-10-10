@@ -1,3 +1,17 @@
 #summary 3rd party Guice addons
 
+Things that build on Guice
+
+  * *[http://www.wideplay.com/wideplayinteractive::warp Warp]* - A component-based, event-driven web framework (a lightweight analog of Tapestry).
+  * *[http://www.wideplay.com/guicewebextensions Guice WebExtensions]* - New scopes for your web apps, @FlashScoped and @ConversationScoped
+  * 
+
+Integrations of Guice with other 3rd-party packages
+
   * *[http://dev.priorartisans.com/tim/dwr-guice/index.html DWR-Guice Integration]* - [http://tembrel.blogspot.com/2007/04/guice-support-in-dwr.html Tim Peierls integrated] Guice with [http://getahead.org/dwr DWR] (Direct Web Remoting).
+  * *[http://www.wideplay.com/guicewebextensions2 Guice WebExtensions Persist]* and *[http://www.wideplay.com/dynamicfinders Dynamic Finders]* - make Guice and Hibernate/JPA like each other
+
+Other
+
+  * *[http://code.google.com/p/titan-ioc/ Titan]* is like "Guice for .NET"
+
