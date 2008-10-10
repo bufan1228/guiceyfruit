@@ -1,0 +1,97 @@
+#summary How to do it with Guice 1.0
+
+An incomplete FAQ explaining how to accomplish various tasks using Guice 1.0.
+
+=== How do I inject configuration parameters into objects created via Guice? ===
+
+The recommended way is write a custom annotation for each configuration parameter:
+
+{{{
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.PARAMETER})
+@BindingAnnotation
+public @interface Greeting {}
+}}}
+
+{{{
+@Inject
+Foo(@Greeting String greeting) 
+}}}
+
+{{{
+bindConstant().annotatedWith(Greeting.class).to("Hello!");
+}}}
+
+If you don't want to write an annotation for each parameter, you could use the @Named annotation, but then you lose compile-time checking.  Or you could provide groups of related parameters together by writing a config class with a getter for each parameter.
+
+=== How do I load configuration parameters from a file? ===
+
+Guice 1.0 doesn't provide this, but you can write your own module that reads the file and binds the parameters.
+
+The advantage of using annotations and a module is that it separates configuration loading from configuration injection, so you can change where configuration parameters come from without changing the classes that use them.
+
+=== How do I pass a parameter when creating an object via Guice? ===
+
+Guice doesn't have direct support for this in 1.0.  You have to either write a factory class or use [http://groups.google.com/group/google-guice/browse_thread/thread/9a7e2c57583d21d6 AssistedInject].  When writing a factory, the factory should be created via Guice, but the object itself is created by the factory, not by Guice.
+
+{{{
+public class Thing {
+  // note: no @Inject annotation here
+  private Thing(A a, B b) {
+
+    ...
+  }
+
+  public static class Factory {
+    @Inject
+    public Factory(A a) { ... }
+    public Thing make(B b) { ... }
+  }
+}
+}}}
+
+{{{
+public class Example {
+  @Inject
+  public Example(Thing.Factory factory) { ... }
+}
+}}}
+
+=== How do I build two similar but slightly different trees of objects? ===
+
+(Also known as the "robot legs" problem.)
+
+Currently you need to use two separate injectors for this.
+
+=== How can I inject an inner class? ===
+
+Guice doesn't support this.  However, you can inject a _nested_ class (sometimes called a "static inner class"):
+
+{{{
+class Outer {
+  static class Nested {
+    ...
+  }
+}
+}}}
+
+=== How do I inject a null? ===
+
+Guice 1.0 doesn't support this.  Instead, you could use an optional dependency:
+
+{{{
+class Example {
+  @Inject(optional=true)
+  void setFoo(Foo value);
+}
+}}}
+
+Then, if you don't bind the parameter at all, it won't be set.
+
+An alternative is to use a null object.
+
+=== How can I get other questions answered, or contribute a recipe? ===
+
+If you have a recipe to contribute, please add it here as a comment and we will eventually add it to the recipe book.
+
+For questions, please post to the [http://groups.google.com/group/google-guice google-guice] discussion group.
