@@ -1,4 +1,5 @@
 #summary Guice best practices
+#labels Featured
 
 = Field vs. method vs. constructor injection =
 
