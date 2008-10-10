@@ -4,10 +4,10 @@
   * better error messages for "required=false"
   * better error handling when multiple params missing bindings
   * include source in exception messages (does this make sense?) 
-  * sort error messages
-  * implicit bindings
-  * look up constructors for DefaultFactory when creating container
 
 Done:
   * better error message for to(T) with a scope
   * better error message for duplicate scopes
+  * sort error messages
+  * implicit bindings
+  * look up constructors for DefaultFactory when creating container
