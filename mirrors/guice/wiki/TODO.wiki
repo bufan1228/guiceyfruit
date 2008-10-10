@@ -2,8 +2,6 @@
 
   * users' guide
   * better error handling when multiple params missing bindings
-  * better error sources. include source in exception messages (does this make sense?)
-  * overload link()--make sure overloadings are adequate
 
 Done:
   * inject factories, still need to support toFactory(Key)
@@ -13,3 +11,5 @@ Done:
   * sort error messages
   * implicit bindings
   * look up constructors for DefaultFactory when creating container
+  * better error sources. include source in exception messages (does this make sense?)
+  * overload link()--make sure overloadings are adequate
