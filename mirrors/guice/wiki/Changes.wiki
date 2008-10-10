@@ -1,4 +1,4 @@
-#summary Changes in each release
+#summary Significant changes in each release
 
 = 1.0rc2 (changes since 1.0rc1) =
 
@@ -15,7 +15,6 @@
   * When a binding annotation has attributes, if we can't find a binding to the same set of attribute values, we now look for a binding to just the annotation type.
   * Created a separate jar for the `servlet` package
   * Created a Struts 2 plugin jar
-
 
 
 
