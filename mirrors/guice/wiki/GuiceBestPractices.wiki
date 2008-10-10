@@ -34,3 +34,22 @@ Constructor injection
    * Session scope is overrated
       * Usually replaceable by conversation scope (Bob, hurry up and write that!)
       * If you want to cache something, use a cache!
+
+= Eager singletons =
+
+A common way to create an eager singleton is
+
+`  binder.bind(Service.class).toInstance(new MyService());`
+
+But this is not such a great way to do it!
+
+   * Guice doesn't construct MyService, so you get only field and method injection, not constructor injection.
+   * Your singleton is fully initialized even if no one ever even calls createInjector()!
+      * This could be running inside a tool of some kind, not a real app
+   * This gives you no lazy-loading option, even in tests that use this module.
+
+Why not let Guice do what Guice does best (creating things)?
+
+`  binder.bind(Service.class).to(MyService.class).asEagerSingleton();`
+
+The main disadvantage of this is that you are forced to name your class, while you might have provided an anonymous instance above.  Oh well.
