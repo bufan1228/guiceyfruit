@@ -1,4 +1,5 @@
 #summary How does Guice compare to Spring?
+#labels Featured
 
 The Spring Framework, created by Rod Johnson, blazed the Java dependency injection trail. If not the first dependency injection framework, you can certainly credit Spring with pioneering much of what we know about dependency injection and bringing it into the mainstream. Guice might not exist (at least not this early) if not for Spring's example.
 
