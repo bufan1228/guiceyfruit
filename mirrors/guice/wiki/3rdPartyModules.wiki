@@ -2,8 +2,9 @@
 
 Things that build on Guice
 
-  * *[http://www.wideplay.com/wideplayinteractive::warp Warp]* - A component-based, event-driven web framework (a lightweight analog of Tapestry).
+  * *[http://gabriel.reposita.org/ Gabriel]* - A permission-based security framework from Stephan Schmidt.
   * *[http://www.wideplay.com/guicewebextensions Guice WebExtensions]* - New scopes for your web apps, @FlashScoped and @ConversationScoped
+  * *[http://www.wideplay.com/wideplayinteractive::warp Warp]* - A component-based, event-driven web framework (a lightweight analog of Tapestry).
 
 Integrations of Guice with other 3rd-party packages
 
@@ -13,3 +14,4 @@ Integrations of Guice with other 3rd-party packages
 Other
 
   * *[http://code.google.com/p/titan-ioc/ Titan]* is like "Guice for .NET"
+
