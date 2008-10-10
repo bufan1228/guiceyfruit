@@ -10,3 +10,4 @@
   * http://www.kallisti.net.nz/blog/2007/03/dependency-injection-is-my-new-best-friend/
   * http://stuffthathappens.com/blog/2007/03/09/guicy-good/
   * http://jroller.com/page/habuma?entry=guice_vs_spring_javaconfig_a
+  * http://programming.reddit.com/info/1cxfe/comments
