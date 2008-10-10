@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<project name="guice" default="compile">
+
+  <import file="common.xml"/>
+
+  <path id="compile.classpath">
+    <fileset dir="${lib.dir}" includes="*.jar"/>
+    <fileset dir="${lib.dir}/build" includes="*.jar"/>
+  </path>
+
+  <target name="jar" depends="compile"
+       description="Build jar.">
+    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask" 
+      classpath="lib/build/jarjar-0.9.jar"/>
+    <mkdir dir="${build.dir}/dist"/>
+    <jarjar jarfile="${build.dir}/dist/guice-${version}.jar">
+      <fileset dir="${build.dir}/classes"/>
+      <zipfileset src="lib/build/cglib-nodep-2.2_beta1.jar"/>
+      <zipfileset src="lib/build/asm-3.0.jar"/>
+      <rule pattern="net.sf.cglib.**" result="com.google.inject.cglib.@1"/>
+      <rule pattern="org.objectweb.asm.**" result="com.google.inject.asm.@1"/>
+    </jarjar>
+  </target>
+
+  <target name="dist" depends="jar, javadoc"
+       description="Build entire distribution.">
+    <ant antfile="servlet/build.xml" target="jar" inheritAll="false"/>
+    <ant antfile="spring/build.xml" target="jar" inheritAll="false"/>
+    <ant antfile="struts2/plugin/build.xml" target="jar" inheritAll="false"/>
+   
+    <copy toDir="${build.dir}/dist"> 
+      <fileset dir="servlet/build" includes="*.jar"/>
+    </copy>
+    <copy toDir="${build.dir}/dist"> 
+      <fileset dir="spring/build" includes="*.jar"/>
+    </copy>
+    <copy toDir="${build.dir}/dist"> 
+      <fileset dir="struts2/plugin/build" includes="*.jar"/>
+    </copy>
+    
+    <copy toDir="${build.dir}/dist" file="COPYING"/> 
+    <copy toDir="${build.dir}/dist"> 
+      <fileset dir="${lib.dir}" 
+        includes="*.jar"/>
+    </copy>
+    <copy toDir="${build.dir}/dist"> 
+      <fileset dir="${build.dir}" includes="javadoc/**/*"/>
+    </copy>
+
+    <zip destfile="${build.dir}/guice-${version}.zip"
+      basedir="${build.dir}/dist"/>
+    <zip destfile="${build.dir}/guice-${version}-src.zip"
+      basedir="." 
+      excludes="build/**/*,build,.svn,.svn/**/*,**/.svn,classes,classes/**/*"/>
+  </target>
+  
+  <target name="test.dist"
+      depends="jar, test.compile"
+      description="Execute JUnit tests against distribution jar.">
+    <java fork="true" 
+        classname="junit.textui.TestRunner"
+        failonerror="true"
+        taskname="junit">
+      <classpath>
+        <pathelement location="${build.dir}/test"/>
+        <pathelement location="${build.dir}/dist/guice-${version}.jar"/>
+        <pathelement location="lib/aopalliance.jar"/>
+        <pathelement location="lib/build/junit.jar"/>
+        <pathelement location="lib/build/servlet-api-2.5.jar"/>
+        <pathelement location="lib/build/easymock.jar"/>
+      </classpath>
+      <arg value="com.google.inject.AllTests"/>    
+    </java>
+  </target>
+  
+  <target name="javadoc"
+      description="Generate Javadocs.">
+    <mkdir dir="${build.dir}/javadoc"/>
+    <javadoc packagenames="${javadoc.packagenames}"
+         destdir="${build.dir}/javadoc"
+         author="false"
+         protected="true"
+         windowtitle="Guice 1.0 API">
+      <sourcepath>
+        <pathelement location="${src.dir}"/>
+        <pathelement location="${servlet.src.dir}"/>
+        <pathelement location="${spring.src.dir}"/>
+      </sourcepath>
+      <classpath refid="compile.classpath"/>
+      <classpath>
+        <fileset dir="servlet/lib/build" includes="*.jar"/>
+      </classpath>
+      <link href="http://aopalliance.sourceforge.net/doc"/>
+      <link href="http://java.sun.com/javase/6/docs/api"/>
+      <link href="http://www.springframework.org/docs/api/"/>
+    </javadoc>
+  </target>
+
+  <target name="clean.all"
+      depends="clean"
+      description="Remove generated files.">
+    <ant dir="servlet" antfile="build.xml" target="clean"/>
+    <ant dir="spring" antfile="build.xml" target="clean"/>
+    <ant dir="struts2/plugin" antfile="build.xml" target="clean"/>
+  </target>
+  
+</project>
