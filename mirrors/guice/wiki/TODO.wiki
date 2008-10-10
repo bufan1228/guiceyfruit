@@ -6,3 +6,4 @@
   * better error handling for multiple missing params
   * include source in exception messages 
   * better error message for duplicate scopes
+  * sort error messages
