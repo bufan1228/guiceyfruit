@@ -3,53 +3,53 @@
 = Field vs. method vs. constructor injection =
 
 Field injection
-   * + Most compact syntax (good for a trivial custom provider, e.g.)
-   * - Can't take any special action upon injection
-   * - Your class is not testable!
+  * + Most compact syntax (good for a trivial custom provider, e.g.)
+  * - Can't take any special action upon injection
+  * - Your class is not testable!
 
 Method injection
-   * + Isn't field injection
-   * + Only thing that works for some strange edge cases
+  * + Isn't field injection
+  * + Only thing that works for some strange edge cases
 
 Constructor injection
-   * + Fields can be final!
-   * + Injection cannot possibly have been skipped, even if Guice is not in the picture
-   * + Easy to see dependencies at a glance
-   * + It's what the idea of construction is all about
-   * - No optional injections
-   * - Useless when Guice can't do instantiation itself, e.g. a servlet
-   * - Subclasses need to "know about" the injections needed by their superclasses
-   * - Less convenient for tests that only "care about" one of the parameters
+  * + Fields can be final!
+  * + Injection cannot possibly have been skipped, even if Guice is not in the picture
+  * + Easy to see dependencies at a glance
+  * + It's what the idea of construction is all about
+  * - No optional injections
+  * - Useless when Guice can't do instantiation itself, e.g. a servlet
+  * - Subclasses need to "know about" the injections needed by their superclasses
+  * - Less convenient for tests that only "care about" one of the parameters
 
 = Choosing a scope =
 
-   * If the object is stateless and inexpensive - then who cares?
-   * If the object is stateful, it should hopefully be obvious
-      * But you may have to write a custom scope yourself
-   * Never use Singleton or SessionScoped on a class that isn't thread-safe!
-   * For @RequestScoped and "no scope", you don't have to worry about concurrent access.
-   * Singleton exists primarily for two types of objects
-      * Ones that are expensive to construct
-      * Ones that tie up resources (e.g., a connection pool)
-   * Session scope is overrated
-      * Usually replaceable by conversation scope (Bob, hurry up and write that!)
-      * If you want to cache something, use a cache!
+  * If the object is stateless and inexpensive - then who cares?
+  * If the object is stateful, it should hopefully be obvious
+    * But you may have to write a custom scope yourself
+  * Never use Singleton or SessionScoped on a class that isn't thread-safe!
+  * For @RequestScoped and "no scope", you don't have to worry about concurrent access.
+  * Singleton exists primarily for two types of objects
+    * Ones that are expensive to construct
+    * Ones that tie up resources (e.g., a connection pool)
+  * Session scope is overrated
+    * Usually replaceable by conversation scope (Bob, hurry up and write that!)
+    * If you want to cache something, use a cache!
 
 = Eager singletons =
 
 A common way to create an eager singleton is
 
-`  binder.bind(Service.class).toInstance(new MyService());`
+`binder.bind(Service.class).toInstance(new MyService());`
 
 But this is not such a great way to do it!
 
-   * Guice doesn't construct MyService, so you get only field and method injection, not constructor injection.
-   * Your singleton is fully initialized even if no one ever even calls createInjector()!
-      * This could be running inside a tool of some kind, not a real app
-   * This gives you no lazy-loading option, even in tests that use this module.
+  * Guice doesn't construct MyService, so you get only field and method injection, not constructor injection.
+  * Your singleton is fully initialized even if no one ever even calls createInjector()!
+    * This could be running inside a tool of some kind, not a real app
+  * This gives you no lazy-loading option, even in tests that use this module.
 
 Why not let Guice do what Guice does best (creating things)?
 
-`  binder.bind(Service.class).to(MyService.class).asEagerSingleton();`
+`binder.bind(Service.class).to(MyService.class).asEagerSingleton();`
 
 The main disadvantage of this is that you are forced to name your class, while you might have provided an anonymous instance above.  Oh well.
