@@ -3,4 +3,4 @@
   * Google ([http://adwords.google.com/ AdWords Frontend] and several others)
   * [http://www.limewire.com LimeWire]
 
-See also 3rdPartyModules for frameworks and libraries that use Guice.
+See also [http://code.google.com/p/google-guice/wiki/3rdPartyModules 3rdPartyModules] for frameworks and libraries that use Guice.
