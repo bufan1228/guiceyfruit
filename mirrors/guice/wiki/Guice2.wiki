@@ -1,11 +1,34 @@
 #summary Overview of the planned 2.0 release
 
-= Changes since 1.0 =
+=New Features=
+
+==Binding Overrides==
+[http://publicobject.com/2008/05/overriding-bindings-in-guice.html Override] the bindings from one module with another:
+{{{
+Module functionalTestModule 
+        = Guice.overrideModule(new ProductionModule(), new OverridesModule());
+}}}
+
+==Multibindings, MapBindings==
+Bind elements of [http://publicobject.com/2008/05/guice-multibindings-extension-checked.html Sets] and [http://publicobject.com/2008/05/mapbinder-checked-in.html Maps], then inject the full collection. Bindings are aggregated from all modules.
+{{{
+public class SnacksModule extends AbstractModule {
+  protected void configure() {
+    MapBinder<String, Snack> mapBinder
+        = MapBinder.newMapBinder(binder(), String.class, Snack.class);
+    mapBinder.addBinding("twix").toInstance(new Twix());
+    mapBinder.addBinding("snickers").toProvider(SnickersProvider.class);
+    mapBinder.addBinding("skittles").to(Skittles.class);
+  }
+}
+}}}
+
+=Changes since 1.0=
 
 ==Exceptions==
 In Guice 1.0, when a custom provider throws an unchecked exception, sometimes Guice wraps the exception and sometimes it doesn't. It depends on whether the provider is being called directly (via Provider.get()) or indirectly (such as for injecting into another type).
 
-In Guice 2.0, any time a custom provider throws, Guice wraps it in a ProvisionException. This rule is simpler, and it makes it easier to write fault-tolerant code with Guice. 
+In Guice 2.0, any time a custom provider throws, Guice wraps it in a ProvisionException. [http://publicobject.com/2008/04/future-guice-providers-that-throw.html This rule is simpler], and it makes it easier to write fault-tolerant code with Guice. 
 
 ==Abstract Types==
 Guice doesn't support injecting into abstract types. The messaging around this has been improved since 1.0, and some code that was silently failing now throws exceptions.
@@ -24,9 +47,11 @@ public class FooTest extends TestCase {
 }
 }}}
 
+==Primitives and Arrays in Keys==
+Guice now [http://publicobject.com/2008/06/integerclass-and-intclass-as-guice-keys.html canonicalizes] primitive types (like `int.class`) and array types (like `Integer[].class`) when they're used in Keys. 
+
 ==Annotation Implementations==
 Guice 2.0 fixes the treatment of equals() and hashCode() for fieldless annotations. Annotation implementations that don't implement equals() and hashCode() may have worked in 1.0 but will be broken in 2.0.
 
 ==SPI Changes==
 SourceProviders have been replaced with `Binder.withSource` and `Binder.skipSources`. These new methods are easier to call and test. They don't require static initialization or static dependencies.
-
