@@ -1,4 +1,4 @@
-#summary One-a list of applications that use Guice
+#summary a list of applications that use Guice
 
   * Google ([http://adwords.google.com/ AdWords Frontend] and several others)
   * [http://www.limewire.com LimeWire]
