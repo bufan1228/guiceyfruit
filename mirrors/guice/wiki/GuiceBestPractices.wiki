@@ -2,16 +2,16 @@
 
 = Field vs. method vs. constructor injection =
 
-Field injection
+*Field injection*
   * + Most compact syntax (good for a trivial custom provider, e.g.)
   * - Can't take any special action upon injection
   * - Your class is not testable!
 
-Method injection
+*Method injection*
   * + Isn't field injection
   * + Only thing that works for some strange edge cases
 
-Constructor injection
+*Constructor injection*
   * + Fields can be final!
   * + Injection cannot possibly have been skipped, even if Guice is not in the picture
   * + Easy to see dependencies at a glance
