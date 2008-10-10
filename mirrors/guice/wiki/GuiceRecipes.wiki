@@ -1,0 +1,43 @@
+#summary Guice Recipes
+
+= Guice Recipes =
+
+Here are some recipes describing how various tasks are accomplished with Guice.  (Work in progress; more to come.)
+
+=== How do I inject configuration parameters into objects created via Guice? ===
+
+The recommended way is write a custom annotation for each configuration parameter:
+
+{{{
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.PARAMETER})
+@BindingAnnotation
+public @interface Greeting {}
+}}}
+
+{{{
+@Inject
+Foo(@Greeting String greeting) 
+}}}
+
+{{{
+bindConstant().annotatedWith(Greeting.class).to("Hello!");
+}}}
+
+If you don't want to write an annotation for everything, you can use the @Named annotation, but then you lose compile-time checking.
+
+=== How do I load configuration parameters from a file? ===
+
+Guice doesn't provide this, but you can write your own module that reads the file and binds the parameters.
+
+The advantage of using annotations and a module is that you can change where configuration parameters come from without changing the classes that use them.
+
+=== How can my method pass a parameter when creating an object via Guice? ===
+
+Guice doesn't have direct support for this yet.  You have to either write a factory class or use [http://groups.google.com/group/google-guice/browse_thread/thread/9a7e2c57583d21d6 AssistedInject].  When using a factory, the factory should be created via Guice, but the object itself is created by the factory, not by Guice.
+
+=== How do I build two similar but slightly different trees of objects? ===
+
+(Also known as the "robot legs" problem.)
+
+Currently you need to use two separate injectors for this.
