@@ -1,7 +1,5 @@
 #summary Guice Recipes
 
-= Guice Recipes =
-
 Here are some recipes describing how various tasks are accomplished with Guice.  (Work in progress; more to come.)
 
 === How do I inject configuration parameters into objects created via Guice? ===
