@@ -1,0 +1,9 @@
+#summary Links to Guice discussions
+
+  * http://www.theserverside.com/news/thread.tss?thread_id=44593
+  * http://www.oreillynet.com/onjava/blog/2007/03/the_next_spring_google_guice.html
+  * http://jroller.com/page/Solomon?entry=ioc_di_alliance
+  * http://www.infoq.com/news/2007/03/guice
+  * http://crazybob.org/2007/03/guice-10.html
+  * http://forum.springframework.org/showthread.php?t=35768
+
