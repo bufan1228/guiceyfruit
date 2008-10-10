@@ -2,7 +2,7 @@
 
 
 = Post 1.0 (tentative changes) =
-  * Provider.get() throws ProvisionException rather than a mix of ProvisionException and application exceptions
+  * Provider.get() throws `ProvisionException` only. Previously this was a mix of `ProvisionException` and application exceptions
   * Support for injection points to accept null using a @Nullable annotation
   * Private implementation classes moved to `com.google.inject.internal`
 
