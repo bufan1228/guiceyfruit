@@ -5,7 +5,7 @@
 
 The Spring Framework, created by Rod Johnson, blazed the Java dependency injection trail. If not the first dependency injection framework, you can certainly credit Spring with pioneering much of what we know about dependency injection and bringing it into the mainstream. Guice might not exist (at least not this early) if not for Spring's example.
 
-Guice is anything but a rehash of Spring. Guice was born purely out of use cases from one of Google's biggest (in every way) applications: !AdWords. We sat down and asked ourselves, how do we really want to build this application going forward? Guice enables our answer. 
+Guice is anything but a rehash of Spring. Guice was born purely out of use cases from one of Google's biggest (in every way) applications: [http://adwords.google.com AdWords]. We sat down and asked ourselves, how do we really want to build this application going forward? Guice enables our answer. 
 
 Guice wholly embraces annotations and generics, thereby enabling you to wire together and test objects with measurably less effort. Guice proves you can use annotations instead of error-prone, refactoring-adverse string identifiers. 
 
