@@ -6,11 +6,13 @@ Our plan is to release Guice 2.0 during the summer of 2008.
 
 =New Features=
 
+==Provider Methods==
+
 ==Binding Overrides==
 [http://publicobject.com/2008/05/overriding-bindings-in-guice.html Override] the bindings from one module with another:
 {{{
 Module functionalTestModule 
-        = Guice.overrideModule(new ProductionModule(), new OverridesModule());
+        = Modules.override(new ProductionModule()).with(new OverridesModule());
 }}}
 
 ==Multibindings, MapBindings==
@@ -33,12 +35,28 @@ Like `java.lang.reflect`, but for Guice. It lets you rewrite a Module, tweaking 
 ==OSGi-friendly AOP==
 Guice does bytecode generation internally to implement AOP. In version 2.0, generated classes are loaded by a bridge classloader that works in managed environments such as OSGi.
 
+==Servlets==
+Servlets can be injected via `InjectedHttpServlet` and `GuiceServletContextListener`.
+
+==Pluggable Type Converters==
+Constant String bindings can be converted to arbitrary types (such as dates, URLs, or colours) using pluggable type converters.
+
+==Small Features==
+`Binder.getProvider` and `AbstractModule.requireBinding` allows modules to declare and use dependencies.
+`Binder.requestInjection` allows modules to register instances for injection at Injector-creation time.
+`Proviers.of()` always provides the same instance, useful for testing.
+`Scopes.NO_SCOPE` allows you make no-scoping explicit.
+`Matcher.inSubpackage` matches all classes in any child package of the given one.
+`Types` utility class for creating implementations of generic types.
+
 =Changes since 1.0=
 
 ==Exceptions==
 In Guice 1.0, when a custom provider throws an unchecked exception, sometimes Guice wraps the exception and sometimes it doesn't. It depends on whether the provider is being called directly (via Provider.get()) or indirectly (such as for injecting into another type).
 
 In Guice 2.0, any time a custom provider throws, Guice wraps it in a ProvisionException. [http://publicobject.com/2008/04/future-guice-providers-that-throw.html This rule is simpler], and it makes it easier to write fault-tolerant code with Guice. 
+
+ProvisionException and OutOfScopeException are now public.
 
 ==Abstract Types==
 Guice doesn't support injecting into abstract types. The messaging around this has been improved since 1.0, and some code that was silently failing now throws exceptions.
