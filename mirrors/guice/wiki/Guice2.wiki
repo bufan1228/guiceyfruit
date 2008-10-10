@@ -30,6 +30,9 @@ public class SnacksModule extends AbstractModule {
 ==Introspection API==
 Like `java.lang.reflect`, but for Guice. It lets you rewrite a Module, tweaking bindings programatically. It also lets you inspect a created injector, and examine its bindings. This is intended to enable simpler, more powerful extensions and tools for Guice.
 
+==OSGi-friendly AOP==
+Guice does bytecode generation internally to implement AOP. In version 2.0, generated classes are loaded by a bridge classloader that works in managed environments such as OSGi.
+
 =Changes since 1.0=
 
 ==Exceptions==
