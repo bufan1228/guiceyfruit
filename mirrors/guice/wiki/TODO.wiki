@@ -1,10 +1,8 @@
 #summary Stuff to do before our initial release.
 
-  * Upfront error checking (i.e. "Foo is missing a dependency.")
-  * Write a users guide
-  * Support startup tasks, pick one: 
-    * Eagerly load some singletons
-    * Inject a "main" class (perhaps per module)
-    * Rely on static injection? If so, we're done!
-  * Make it stupid simple to use Guice in a web application, scopes, intitialization, maybe a web application template, etc.
-  * Really simple interception using AOP Alliance
+  * users' guide
+  * better error message for to(T) with a scope
+  * better error messages for "required=false"
+  * better error handling for multiple missing params
+  * include source in exception messages 
+  * better error message for duplicate scopes
