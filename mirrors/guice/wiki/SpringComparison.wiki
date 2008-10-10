@@ -10,7 +10,6 @@ Guice works with Spring when possible. By the nature of dependency injection you
 
 While Spring seems to have everything you could possibly ever need, Guice focuses on dependency injection and follows a use case-driven approach and ignores feature counts. Guice highly prioritizes backward compatibility, but we also don't want to introduce a feature which could limit future innovation or add unnecessary complexity, so all new features undergo a great deal of scrutiny. If you want to take advantage of Spring's higher level frameworks for data access, remoting, etc., you should be able to do so whilst using Guice as your core container.
 
-While Spring externalizes binding information to an XML configuration, Guice chooses to express this information in Java code and externalize only as much configuration as is necessary.
+While Spring externalizes binding information to an XML configuration, Guice chooses to express this information in Java code and externalize only as much configuration as is necessary. Guice uses an EDSL (embedded domain-specific language) design which is a fancy way of saying the Guice configuration looks like a little language implemented using Java. EDSL-based approaches have been popular with such frameworks as EasyMock. 
 
 Finally, Guice's unique design enables unprecedented performance, some 100X faster than Spring for dependency injection. Guice builds method interception in at the core instead of as an afterthought. This hides the mechanics of AOP from the user reducing the chances of "gotchas" and leveling the learning curve, and minimizes performance overhead. 
-
