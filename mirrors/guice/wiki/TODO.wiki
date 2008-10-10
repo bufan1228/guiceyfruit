@@ -4,8 +4,8 @@
   * better error handling when multiple params missing bindings
   * better error sources. include source in exception messages (does this make sense?)
   * pass annotation to scope?
-  * inject factories
-  * overload link() 
+  * inject factories, still need to support toFactory(Key)
+  * overload link()--make sure overloadings are adequate
 
 Done:
   * better error messages for "required=false" (limited scope of @Inject)
