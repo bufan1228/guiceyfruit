@@ -14,6 +14,7 @@ Integrations of Guice with other 3rd-party packages
   * *[http://code.google.com/p/guiceberry/ GuiceBerry]* - Unit testing. Write manageable integration tests using JUnit.
   * *[http://code.google.com/p/groovy-guice/ Groovy-Guice]* - Groovy
   * *[http://code.google.com/p/peaberry/ Peaberry]* - OSGi
+  * *[http://code.google.com/p/stripes-guicer/ Stripes-Guicer]* - [http://www.stripesframework.org/ Stripes]
 
 Other
 
