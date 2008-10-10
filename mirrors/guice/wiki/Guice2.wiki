@@ -27,6 +27,9 @@ public class SnacksModule extends AbstractModule {
 }
 }}}
 
+==Introspection API==
+Like `java.lang.reflect`, but for Guice. It lets you rewrite a Module, tweaking bindings programatically. It also lets you inspect a created injector, and examine its bindings. This is intended to enable simpler, more powerful extensions and tools for Guice.
+
 =Changes since 1.0=
 
 ==Exceptions==
@@ -57,5 +60,8 @@ Guice now [http://publicobject.com/2008/06/integerclass-and-intclass-as-guice-ke
 ==Annotation Implementations==
 Guice 2.0 fixes the treatment of equals() and hashCode() for fieldless annotations. Annotation implementations that don't implement equals() and hashCode() may have worked in 1.0 but will be broken in 2.0.
 
+==Injector.getBinding==
+Guice 2.0 throws an exception if the binding cannot be resolved. The old version used to return null. To get the old behaviour, use `injector.getBindings().get(key)`.
+
 ==SPI Changes==
-SourceProviders have been replaced with `Binder.withSource` and `Binder.skipSources`. These new methods are easier to call and test. They don't require static initialization or static dependencies.
+!SourceProviders have been replaced with `Binder.withSource` and `Binder.skipSources`. These new methods are easier to call and test. They don't require static initialization or static dependencies.
