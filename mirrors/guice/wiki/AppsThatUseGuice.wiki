@@ -1,0 +1,6 @@
+#summary One-a list of applications that use Guice
+
+  * Google ([http://adwords.google.com/ AdWords Frontend] and several others)
+  * [http://www.limewire.com LimeWire]
+
+See also 3rdPartyModules for frameworks and libraries that use Guice.
