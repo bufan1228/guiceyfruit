@@ -1,5 +1,9 @@
 #summary Overview of the planned 2.0 release
 
+=Overview=
+
+Our plan is to release Guice 2.0 during the summer of 2008.
+
 =New Features=
 
 ==Binding Overrides==
