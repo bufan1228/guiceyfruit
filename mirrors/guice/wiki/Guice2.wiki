@@ -15,7 +15,7 @@ Module functionalTestModule
         = Modules.override(new ProductionModule()).with(new OverridesModule());
 }}}
 
-==Multibindings, MapBindings==
+==Multibindings, !MapBindings==
 Bind elements of [http://publicobject.com/2008/05/guice-multibindings-extension-checked.html Sets] and [http://publicobject.com/2008/05/mapbinder-checked-in.html Maps], then inject the full collection. Bindings are aggregated from all modules.
 {{{
 public class SnacksModule extends AbstractModule {
@@ -42,21 +42,21 @@ Servlets can be injected via `InjectedHttpServlet` and `GuiceServletContextListe
 Constant String bindings can be converted to arbitrary types (such as dates, URLs, or colours) using pluggable type converters.
 
 ==Small Features==
-`Binder.getProvider` and `AbstractModule.requireBinding` allows modules to declare and use dependencies.
-`Binder.requestInjection` allows modules to register instances for injection at Injector-creation time.
-`Proviers.of()` always provides the same instance, useful for testing.
-`Scopes.NO_SCOPE` allows you make no-scoping explicit.
-`Matcher.inSubpackage` matches all classes in any child package of the given one.
-`Types` utility class for creating implementations of generic types.
+  * `Binder.getProvider` and `AbstractModule.requireBinding` allow modules to declare and use dependencies.
+  * `Binder.requestInjection` allows modules to register instances for injection at Injector-creation time.
+  * `Proviers.of()` always provides the same instance, useful for testing.
+  * `Scopes.NO_SCOPE` allows you make no-scoping explicit.
+  * `Matcher.inSubpackage` matches all classes in any child package of the given one.
+  * `Types` utility class for creating implementations of generic types.
 
 =Changes since 1.0=
 
 ==Exceptions==
 In Guice 1.0, when a custom provider throws an unchecked exception, sometimes Guice wraps the exception and sometimes it doesn't. It depends on whether the provider is being called directly (via Provider.get()) or indirectly (such as for injecting into another type).
 
-In Guice 2.0, any time a custom provider throws, Guice wraps it in a ProvisionException. [http://publicobject.com/2008/04/future-guice-providers-that-throw.html This rule is simpler], and it makes it easier to write fault-tolerant code with Guice. 
+In Guice 2.0, any time a custom provider throws, Guice wraps it in a !ProvisionException. [http://publicobject.com/2008/04/future-guice-providers-that-throw.html This rule is simpler], and it makes it easier to write fault-tolerant code with Guice. 
 
-ProvisionException and OutOfScopeException are now public.
+!ProvisionException and !OutOfScopeException are now public.
 
 ==Abstract Types==
 Guice doesn't support injecting into abstract types. The messaging around this has been improved since 1.0, and some code that was silently failing now throws exceptions.
