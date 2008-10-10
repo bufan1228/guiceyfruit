@@ -16,14 +16,27 @@ public @interface Greeting {}
 
 {{{
 @Inject
-Foo(@Greeting String greeting) 
+Foo(@Greeting String greeting) { ... }
 }}}
 
 {{{
 bindConstant().annotatedWith(Greeting.class).to("Hello!");
 }}}
 
-If you don't want to write an annotation for each parameter, you could use the @Named annotation, but then you lose compile-time checking.  Or you could provide groups of related parameters together by writing a config class with a getter for each parameter.
+If you don't want to write an annotation for each parameter, you could use the @Named annotation like this:
+
+{{{
+@Inject
+Foo(@Named("greeting") String greeting) { ... }
+}}}
+
+{{{
+bindConstant().annotatedWith(Names.named("greeting")).to("Hello!");
+}}}
+
+It's less typing, but then you don't get a compiler error if you misspell the name in the annotation.
+
+Another way would be to write a Config class with a getter for each parameter, but that makes it more difficult to tell exactly which parameters are used by each class.
 
 === How do I load configuration parameters from a file? ===
 
