@@ -1,5 +1,10 @@
 #summary Significant changes in each release
 
+
+= Post 1.0 (tentative changes) =
+  * Support for injection points to accept null using a @Nullable annotation
+  * Private implementation classes moved to `com.google.inject.internal`
+
 = 1.0 final =
 
   * Changed constant binding API. Replaced `bindConstant(annotation)` with `bindConstant().annotatedWith(annotation)`. 
@@ -32,4 +37,3 @@
   * When a binding annotation has attributes, if we can't find a binding to the same set of attribute values, we now look for a binding to just the annotation type.
   * Created a separate jar for the `servlet` package
   * Created a Struts 2 plugin jar
-
