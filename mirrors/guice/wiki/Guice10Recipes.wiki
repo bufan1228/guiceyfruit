@@ -58,6 +58,8 @@ public class Example {
 }
 }}}
 
+(Tracked in [http://code.google.com/p/google-guice/issues/detail?id=131 issue 131])
+
 === How do I build two similar but slightly different trees of objects? ===
 
 (Also known as the "robot legs" problem.)
