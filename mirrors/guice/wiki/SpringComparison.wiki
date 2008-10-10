@@ -1,9 +1,13 @@
 #summary How does Guice compare to Spring et al?
 #labels Featured
 
-  _Preface:_ We don't believe Guice and Spring directly compete, but judging from the questions we've received, comparison's are inevitable. While Spring is a full blown platform, Guice focuses on dependency injection. The following comparison assumes readers have some familiarity with [http://docs.google.com/Doc?id=dd2fhx4z_5df5hw8 Guice concepts].
-
 The Spring Framework, created by Rod Johnson, blazed the Java dependency injection trail. If not the first dependency injection framework, you can certainly credit Spring with pioneering much of what we know about dependency injection and bringing it into the mainstream. Guice might not exist (at least not this early) if not for Spring's example.
+
+We don't believe Guice and Spring directly compete. While Spring is a comprehensive platform, Guice focuses on dependency injection. Even so, the first question most people ask is, "how does Guice compare to Spring?" Rather than repeat the same spiel N times, we figured it best to answer the inevitable question one time.
+
+Let us start by saying, the Guice team has a great deal of respect for the Spring developers, community, and their overall attitude. We're more than willing to work together in any capacity. We even gave a few core Spring developers a sneak peek at Guice six months before the 1.0 release, and they've had access to the source code repository ever since.
+
+With out further ado, how does Guice compare to Spring?
 
 Guice is anything but a rehash of Spring. Guice was born purely out of use cases from one of Google's biggest (in every way) applications: [http://adwords.google.com AdWords]. We sat down and asked ourselves, how do we really want to build this application going forward? Guice enables our answer. 
 
@@ -31,6 +35,12 @@ Oftentimes, it doesn't make sense to port perfectly working code which you won't
 From our experience, most AOP frameworks are too powerful for most uses and don't carry their own conceptual weight. Guice builds method interception in at the core instead of as an afterthought. This hides the mechanics of AOP from the user and lowers the learning curve. Using one object instead of a separate proxy reduces memory waste and more importantly reduces the chances of invoking a method without interceptors. Under the covers, Guice uses a separate handler for each method minimizing performance overhead. If you intercept just one method in a class, the other methods will not incur overhead.
 
 Finally, we knew from the beginning that no matter how much more usable Guice is, it probably shouldn't be too much slower than alternative solutions. Back when we wrote the initial performance tests so we could track Guice's performance as development progressed, we had no idea Guice would turn out to be orders of magnitude faster than some alternatives. Guice's unique builder-style design combined with the new concurrency facilities introduced in Java 5 enables unprecedented performance, some 100X faster than Spring for dependency injection (according to [http://google-guice.googlecode.com/svn/trunk/test/com/google/inject/PerformanceComparison.java this benchmark]).
+
+
+
+
+
+
 
 
 
