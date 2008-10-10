@@ -1,0 +1,23 @@
+#summary Changes in each release
+
+= 1.0rc2 (changes since 1.0rc1) =
+
+  * Added `@ScopeAnnotation`. If you forget to bind a scope, you'll get an error.
+  * Added `Binder.addError()` so you can record custom error messages from modules.
+  * Removed `Scopes.DEFAULT`. We now refer to this as "no scope."
+  * Added up front checks to ensure annotations have runtime retention and the proper meta annotations.
+  * Added support for injecting private and protected members (cglib fast reflection doesn't support this).
+  * Renamed `Locator` to `Provider`
+  * Replaced `Factory` with `Provider` also
+  * Removed `Context` from public API. We may support this functionality via injection in a future release but we're leaving it out for now.
+  * Extracted an interface for `Binding`
+  * We now inject members of instances bound using `toInstance()` and `toProvider()` upon container creation.
+  * When a binding annotation has attributes, if we can't find a binding to the same set of attribute values, we now look for a binding to just the annotation type.
+  * Created a separate jar for the `servlet` package
+  * Created a Struts 2 plugin jar
+
+
+
+
+
+
