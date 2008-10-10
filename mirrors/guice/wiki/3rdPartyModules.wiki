@@ -1,1 +1,3 @@
 #summary 3rd party Guice addons
+
+  * *[http://dev.priorartisans.com/tim/dwr-guice/index.html DWR-Guice Integration]* - [http://tembrel.blogspot.com/2007/04/guice-support-in-dwr.html Tim Peierls integrated] Guice with [http://getahead.org/dwr DWR] (Direct Web Remoting).
