@@ -91,7 +91,7 @@ class Example {
 
 Then, if you don't bind the parameter at all, it won't be set.
 
-Unfortunately this only works for types that can be used as constants (such as java.lang.String), not classes you define.  (See [http://code.google.com/p/google-guice/issues/detail?id=101 issue 101] for updates.)
+Unfortunately this only works for types that can be used as constants (such as java.lang.String), not classes you define.  (See [http://code.google.com/p/google-guice/issues/detail?id=101 issue 107].)
 
 A future version of Guice may allow nulls.  (See issue [http://code.google.com/p/google-guice/issues/detail?id=112 issue 112])
 
