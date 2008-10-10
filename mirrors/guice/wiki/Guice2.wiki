@@ -44,7 +44,7 @@ Constant String bindings can be converted to arbitrary types (such as dates, URL
 ==Small Features==
   * `Binder.getProvider` and `AbstractModule.requireBinding` allow modules to declare and use dependencies.
   * `Binder.requestInjection` allows modules to register instances for injection at Injector-creation time.
-  * `Proviers.of()` always provides the same instance, useful for testing.
+  * `Providers.of()` always provides the same instance, useful for testing.
   * `Scopes.NO_SCOPE` allows you make no-scoping explicit.
   * `Matcher.inSubpackage` matches all classes in any child package of the given one.
   * `Types` utility class for creating implementations of generic types.
@@ -75,8 +75,8 @@ public class FooTest extends TestCase {
 }
 }}}
 
-==Primitives and Arrays in Keys==
-Guice now [http://publicobject.com/2008/06/integerclass-and-intclass-as-guice-keys.html canonicalizes] primitive types (like `int.class`) and array types (like `Integer[].class`) when they're used in Keys. 
+==Keys==
+Guice now [http://publicobject.com/2008/06/integerclass-and-intclass-as-guice-keys.html canonicalizes] primitive types (like `int.class`) and array types (like `Integer[].class`) when they're used in Keys. It now supports wildcards like `List<?>` in keys - use `@Provides` to bind these.
 
 ==Annotation Implementations==
 Guice 2.0 fixes the treatment of equals() and hashCode() for fieldless annotations. Annotation implementations that don't implement equals() and hashCode() may have worked in 1.0 but will be broken in 2.0.
