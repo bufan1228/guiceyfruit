@@ -85,7 +85,7 @@ Guice 1.0 doesn't support this.  Instead, you could use an optional dependency:
 {{{
 class Example {
   @Inject(optional=true)
-  void setFoo(Foo value);
+  void setFoo(Foo value) { ... }
 }
 }}}
 
