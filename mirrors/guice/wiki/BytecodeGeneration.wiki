@@ -1,4 +1,4 @@
-#summary Motivation and consequences of generates classes in Guice
+#summary Motivation for and consequences of generating classes in Guice
 
 =Class Loading Overview=
 
