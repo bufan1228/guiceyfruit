@@ -1,9 +1,13 @@
 #summary Stuff to do before our initial release.
 
   * users' guide
-  * better error message for to(T) with a scope
   * better error messages for "required=false"
-  * better error handling for multiple missing params
-  * include source in exception messages 
-  * better error message for duplicate scopes
+  * better error handling when multiple params missing bindings
+  * include source in exception messages (does this make sense?) 
   * sort error messages
+  * implicit bindings
+  * look up constructors for DefaultFactory when creating container
+
+Done:
+  * better error message for to(T) with a scope
+  * better error message for duplicate scopes
