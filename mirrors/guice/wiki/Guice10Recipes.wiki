@@ -110,6 +110,33 @@ A future version of Guice may allow nulls.  (See issue [http://code.google.com/p
 
 An alternative is to use a [http://en.wikipedia.org/wiki/Null_Object_pattern null object].
 
+=== How to inject class with generic type? ===
+
+If you need to inject class with generic type, like:
+
+{{{
+class Example {
+  @Inject
+  void setList(List<String> list) { ... }
+}
+}}}
+
+You may wonder that you can use binding:
+
+{{{
+bind(List.class).toInstance(new ArrayList<String>());
+}}}
+
+In this case you will get following error: com.google.inject.CreationException?: Guice configuration errors: Binding to java.util.List<java.lang.String> not found. No bindings to that type were found.
+
+To get it work you should use such binding:
+
+{{{
+bind(new TypeLiteral<List<String>>() {}).toInstance(new ArrayList<String>());
+}}}
+
+For more information read about [http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/TypeLiteral.html TypeLiteral]
+
 === How can I get other questions answered, or contribute a recipe? ===
 
 If you have a recipe to contribute, please add it here as a comment and we will eventually add it to the recipe book.
