@@ -2,7 +2,7 @@
 
 The Spring Framework created by Rod Johnson blazed the Java dependency injection trail. If not the first dependency injection framework, you can certainly credit Spring with pioneering much of what we know about dependency injection and bringing it into the mainstream. Guice might not exist (at least not this early) if not for Spring's example.
 
-Having learned from Spring among other things, Guice wholeheartedly embraces the new language features introduced in Java 5 and makes dependency injection feel more native to Java, dependency injection "the Java way" so to speak.
+Having learned from Spring among other things, Guice wholeheartedly embraces the new language features introduced in Java 5 and makes dependency injection feel more native to Java, dependency injection "the Java way" so to speak. Guice actually manages to give you _more_ upfront type checking than conventional approaches (factories, service locators, etc.). For starters, Guice supports generic types; you can bind to `List<User>` and `List<Order>` independently. Guice also has no notion of "Java beans" as the Java 5 language features make them obsolete for our purposes.
 
 Spring supports two polar configuration approaches: explicit configuration which is verbose but maintainable, and auto-wiring which is concise but not well suited to non-trivial applications. Guice uses annotations to support a best-of-both-worlds approach which is both concise and maintainable.
 
@@ -10,4 +10,9 @@ Guice works with Spring when possible. By the nature of dependency injection you
 
 While Spring seems to have everything you could possibly ever need, Guice focuses on dependency injection and follows a use case-driven approach and ignores feature counts. Guice highly prioritizes backward compatibility, but we also don't want to introduce a feature which could limit future innovation or add unnecessary complexity, so all new features undergo a great deal of scrutiny. If you want to take advantage of Spring's higher level frameworks for data access, remoting, etc., you should be able to do so whilst using Guice as your core container.
 
-Finally, while Spring externalizes binding information to an XML configuration, Guice chooses to express this information in Java code and externalize only as much configuration as is necessary to properties files. We think property files are easier to read than XML.
+While Spring externalizes binding information to an XML configuration, Guice chooses to express this information in Java code and externalize only as much configuration as is necessary to properties files. We think property files are easier to read than XML.
+
+Finally, Guice's unique design enables unprecedented performance, some 100X faster than Spring for dependency injection. Guice builds method interception in at the core instead of as an afterthought. This hides the mechanics of AOP from the user reducing the chances of "gotchas" and leveling the learning curve, and minimizes performance overhead. 
+
+
+
