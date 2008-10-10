@@ -1,0 +1,3 @@
+GuiceyFruit contains a number of utilities for folks working with [http://code.google.com/p/google-guice/ Guice] to help with the support for other frameworks and APIs like JNDI, JSR 250, EJB3, Spring.
+
+It is the intention of the GuiceyFruit project to migrate as much of its code as possible back to the core Guice framework
