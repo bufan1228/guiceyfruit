@@ -2,7 +2,10 @@
 
   * users' guide
   * better error handling when multiple params missing bindings
-  * include source in exception messages (does this make sense?) 
+  * better error sources. include source in exception messages (does this make sense?)
+  * pass annotation to scope?
+  * inject factories
+  * overload link() 
 
 Done:
   * better error messages for "required=false" (limited scope of @Inject)
