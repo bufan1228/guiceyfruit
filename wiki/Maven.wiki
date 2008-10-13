@@ -1,7 +1,7 @@
 #labels Featured
 If you use [http://maven.apache.org/ maven] then just update your pom.xml to reference the GuiceyFruit repository
 
-For releases
+For releases use the [http://guiceyfruit.googlecode.com/svn/repo/releases/ release repo]
 
 {{{
   <repositories>
@@ -19,7 +19,7 @@ For releases
   </repositories>
 }}}
 
-Or snapshots
+Or snapshots use the [http://guiceyfruit.googlecode.com/svn/repo/snapshots/ snapshots repo]
 {{{
   <repositories>
     <repository>
