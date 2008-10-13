@@ -10,11 +10,11 @@ Scopes are applied to the binding source, not the binding target. For example, s
 {{{
   bind(Bar.class).to(Applebees.class).in(Singleton.class);
   bind(Grill.class).to(Applebees.class).in(Singleton.class);
-}}
+}}}
 This is because the scopes apply to the bound type, not the type that satisfies that binding. To allow only a single instance of our implementation class to be created, use a `@Singleton` annotation on the declaration for that class. Or add yet another binding:
 {{{
   bind(Applebees.class).in(Singleton.class);
-}}
+}}}
 This binding makes the other two `.in(Singleton.class)` clauses above unnecessary.
 
 Prefer to bind with the scope annotation rather than the scope instance:
