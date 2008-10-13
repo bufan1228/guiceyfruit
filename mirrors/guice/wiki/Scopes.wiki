@@ -4,16 +4,16 @@
 
 Scopes are one of Guice's most powerful features.
 
-= Scope Application =
+= Applying Scopes =
 
-Prefer to apply scopes using an annotation on the implementing class. This provides a helpful hint to the code's maintainer. For example, `@Singleton` indicates that a class must be threadsafe.
+Prefer to apply scopes using an annotation on the implementing class. This provides helpful information to the code's maintainer. For example, `@Singleton` indicates that a class must be threadsafe.
 
 Scopes are applied to the binding source, not the binding target. For example, suppose we have a class `Applebees` that implements both `Bar` and `Grill` interfaces. These bindings will allow for *two* instances of that type, one for `Bar`s and another for `Grill`s:
 {{{
   bind(Bar.class).to(Applebees.class).in(Singleton.class);
   bind(Grill.class).to(Applebees.class).in(Singleton.class);
 }}}
-This is because the scopes apply to the bound type, not the type that satisfies that binding. To allow only a single instance of our implementation class to be created, use a `@Singleton` annotation on the declaration for that class. Or add yet another binding:
+This is because the scopes apply to the bound type (`Bar`, `Grill`), not the type that satisfies that binding (`Applebees`). To allow only a single instance of our implementation class to be created, use a `@Singleton` annotation on the declaration for that class. Or add yet another binding:
 {{{
   bind(Applebees.class).in(Singleton.class);
 }}}
