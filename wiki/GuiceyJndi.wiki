@@ -128,11 +128,11 @@ java.naming.factory.initial = org.guiceyfruit.jndi.GuiceInitialContextFactory
 org.guiceyfruit.modules = org.guiceyfruit.jndi.example.ExampleModule
 
 # JNDI entries to create from bindings in the Guice Injector
-com.google.inject.jndi/myInjector = com.google.inject.Injector
+org.guiceyfruit.jndi/myInjector = com.google.inject.Injector
 }}}
 
 Basically you use the format 
 
 {{{
-com.google.inject.jndi/jndiName = bindingClassName
+org.guiceyfruit.jndi/jndiName = bindingClassName
 }}}
