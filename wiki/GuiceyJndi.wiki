@@ -1,3 +1,4 @@
+#labels Featured
 = GuiceyFruit JNDI =
 
 The GuiceyFruit JNDI provider makes it easy to create a JNDI context using Guice as the dependency injection mechanism which lets you look objects up in JNDI and then delegate to Guice to dependency inject them.
@@ -121,10 +122,10 @@ For example this jndi.properties file would expose the Guice injector as a JNDI 
 
 {{{
 # Guice JNDI provider
-java.naming.factory.initial = com.google.inject.jndi.GuiceInitialContextFactory
+java.naming.factory.initial = org.guiceyfruit.jndi.GuiceInitialContextFactory
 
 # list of guice modules to boot up (space separated)
-com.google.inject.modules = com.google.inject.jndi.ExampleModule
+com.google.inject.modules = org.guiceyfruit.jndi.example.ExampleModule
 
 # JNDI entries to create from bindings in the Guice Injector
 com.google.inject.jndi/myInjector = com.google.inject.Injector
