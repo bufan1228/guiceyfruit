@@ -4,7 +4,9 @@
 
 Scopes are one of Guice's most powerful features.
 
-= Tips =
+= Scope Application =
+
+Prefer to apply scopes using an annotation on the implementing class. This provides a helpful hint to the code's maintainer. For example, `@Singleton` indicates that a class must be threadsafe.
 
 Scopes are applied to the binding source, not the binding target. For example, suppose we have a class `Applebees` that implements both `Bar` and `Grill` interfaces. These bindings will allow for *two* instances of that type, one for `Bar`s and another for `Grill`s:
 {{{
