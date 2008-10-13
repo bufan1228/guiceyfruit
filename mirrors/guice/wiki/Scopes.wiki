@@ -4,19 +4,28 @@
 
 Scopes are one of Guice's most powerful features.
 
+= Tips =
 
-= Best Practices =
+Scopes are applied to the binding source, not the binding target. For example, suppose we have a class `Applebees` that implements both `Bar` and `Grill` interfaces. These bindings will allow for *two* instances of that type, one for `Bar`s and another for `Grill`s:
+{{{
+  bind(Bar.class).to(Applebees.class).in(Singleton.class);
+  bind(Grill.class).to(Applebees.class).in(Singleton.class);
+}}
+This is because the scopes apply to the bound type, not the type that satisfies that binding. To allow only a single instance of our implementation class to be created, use a `@Singleton` annotation on the declaration for that class. Or add yet another binding:
+{{{
+  bind(Applebees.class).in(Singleton.class);
+}}
+This binding makes the other two `.in(Singleton.class)` clauses above unnecessary.
 
 Prefer to bind with the scope annotation rather than the scope instance:
 {{{
   // good:
-  bind(Foo.class).in(ServletScopes.REQUEST);
+  bind(Foo.class).to(RealFoo.class).in(ServletScopes.REQUEST);
 
   // better:
-  bind(Bar.class).in(RequestScoped.class);
+  bind(Foo.class).to(RealFoo.class).in(RequestScoped.class);
 }}}
-This way you can reuse the module in a non-servlets environment by specifying a different scope to implement for `RequestScoped.class`
-
+This way you can reuse the module in a non-servlets environment by specifying a different scope to implement for `RequestScoped.class`. Even better, use the `@RequestScoped` annotation on the implementation class.
 
 = Custom Scopes =
 
