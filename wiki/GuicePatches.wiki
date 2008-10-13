@@ -1,0 +1,7 @@
+#labels Featured
+The following Guice patches have been applied to the GuiceyFruit build of Guice
+
+ * [http://code.google.com/p/google-guice/issues/detail?id=78 78] for constructor interceptors to be able to support lifecycles
+ * [http://code.google.com/p/google-guice/issues/detail?id=62 62] for full lifecycle support such as for Jsr250 
+ * [http://code.google.com/p/google-guice/issues/detail?id=258 258] for custom annotation injection points to be better able to support things like @Resource from JSR 250 or @Autowire from Spring or @Context from JAX-RS etc
+ * [http://code.google.com/p/google-guice/issues/detail?id=259 259] for a JNDI provider based on Guice. See GuiceyJndi for more details
