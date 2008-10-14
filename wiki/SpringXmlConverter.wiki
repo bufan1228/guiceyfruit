@@ -1,5 +1,5 @@
 #labels Featured
-The Spring XML Converter takes a traditional Spring XML file containing *<bean/>* elements with *<constructor-arg/>* or *<property/>* tags and converts it to a regular Java class which implements the Guice Module interface and uses @Named injection points so that you can switch your configuration from XML to being mostly Java code with some properties file for the actual Strings you really do want to change between production / testing / development.
+The Spring XML Converter takes a traditional Spring XML file containing <bean/> elements with <constructor-arg/> or <property/> tags and converts it to a regular Java class which implements the Guice Module interface and uses @Named injection points so that you can switch your configuration from XML to being mostly Java code with some properties file for the actual Strings you really do want to change between production / testing / development.
 
 You can run the converter from the command line if you wish assuming a suitable classpath.
 
