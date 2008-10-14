@@ -11,4 +11,4 @@ The output will then be a Java class source file.
 
 Note that this code is currently experimental in nature; it doesn't implement 100% of all the possible XML formats - but its intended as a migration tool, trying to migrate most of your code with little manual intervention.
 
-Though we love patches! Please feel free to improve this code if you find yourself migrating lots of Spring XML files back into Java code!
+*Note that we love patches!* Please feel free to improve this code if you find yourself migrating lots of Spring XML files back into Java code!
