@@ -1,3 +1,9 @@
-GuiceyFruit contains a number of utilities for folks working with [http://code.google.com/p/google-guice/ Guice] to help with the support for other frameworks and APIs like JNDI, JSR 250, EJB3, Spring.
+GuiceyFruit  mirrors the [http://code.google.com/p/google-guice/ Guice] source code using svk into a nice [Maven Maven directory tree and repository] making it easy to use 2.x of Guice from Maven. 
 
-It is the intention of the GuiceyFruit project to migrate as much of its code as possible back to the core Guice framework
+GuiceyFruit also contains a number of utilities on top of the Guice 2.x trunk such as
+
+ * [GuiceyJndi a Guice based JNDI provider]
+ * [SpringXmlConverter a Spring XML to Java code converter]
+ * [GuicePatches a number of patches applied to Guice] for implementing JSR 250, EJB3, JAX-RS, Spring or Camel lifecycles and injection.
+
+It is the intention of the GuiceyFruit project to migrate as much of its code as possible back to the core Guice framework.
