@@ -2,7 +2,7 @@
 
 =Overview=
 
-Our plan is to release Guice 2.0 during the summer of 2008.
+Our plan is to release Guice 2.0 during the [http://groups.google.com/group/google-guice/browse_thread/thread/b00d504b924715d8?pli=1 fall of 2008].
 
 =New Features=
 
