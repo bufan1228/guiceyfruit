@@ -5,3 +5,19 @@ The following Guice patches have been applied to the GuiceyFruit build of Guice
  * [http://code.google.com/p/google-guice/issues/detail?id=62 62] for full lifecycle support such as for Jsr250 
  * [http://code.google.com/p/google-guice/issues/detail?id=258 258] for custom annotation injection points to be better able to support things like @Resource from JSR 250 or @Autowire from Spring or @Context from JAX-RS etc
  * [http://code.google.com/p/google-guice/issues/detail?id=259 259] for a JNDI provider based on Guice. See GuiceyJndi for more details
+
+== Generating Patches Against Guice ==
+
+If you are a guice committer and fancy applying these patches (please!) to the trunk of guice the following commands will generate a patch
+
+for the guice core src
+
+{{{
+svn diff http://guiceyfruit.googlecode.com/svn/trunk/guice/core/src/main/java/com/ http://guiceyfruit.googlecode.com/svn/mirrors/guice/trunk/src/com/
+}}}
+
+and test cases
+
+{{{
+svn diff http://guiceyfruit.googlecode.com/svn/trunk/guice/core/src/test/java/com/ http://guiceyfruit.googlecode.com/svn/mirrors/guice/trunk/test/com/
+}}}
