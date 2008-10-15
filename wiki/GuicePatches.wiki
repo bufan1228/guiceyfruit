@@ -21,3 +21,9 @@ and test cases
 {{{
 svn diff http://guiceyfruit.googlecode.com/svn/trunk/guice/core/src/test/java/com/ http://guiceyfruit.googlecode.com/svn/mirrors/guice/trunk/test/com/
 }}}
+
+for the servlet scopes
+
+{{{
+svn diff http://guiceyfruit.googlecode.com/svn/trunk/guice/servlet/src/main/java/com/ http://guiceyfruit.googlecode.com/svn/mirrors/guice/trunk/servlet/src/com/
+}}}
