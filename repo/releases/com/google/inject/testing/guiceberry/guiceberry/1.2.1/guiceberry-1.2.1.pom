@@ -4,4 +4,13 @@
   <groupId>com.google.inject.testing.guiceberry</groupId>
   <artifactId>guiceberry</artifactId>
   <version>1.2.1</version>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.google.inject.testing</groupId>
+      <artifactId>tl4j</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+  </dependencies>
+  
 </project>
