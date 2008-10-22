@@ -5,12 +5,11 @@ You can associate the Guice Module(s) to be used by your test case using the fol
 
  * annotate your test class with the @Configuration annotation which takes the Module class as a parameter
  * if no annotation is specified then guiceyfruit will look for an inner class called Configuration implementing Module
- * specify the *org.guiceyfruit.modules* system property a space separated list of modules
+ * specify the *org.guiceyfruit.modules* system property a space separated list of modules which is useful for reusing a test case with a different module
 
-So you can either use the class naming convention, or use an annotation to denote which module to use.
+So typically you can either use the class naming convention, or use an annotation to denote which module to use 
 
-For example
-  
+For example using an explicit annotation
 
 {{{
 // lets specify an exact module
@@ -23,6 +22,7 @@ pubilc class MyTest extends GuiceyFruitTestCase {
 }
 }}}
 
+or using the naming convention
 
 {{{
 // lets use the inner class
@@ -37,3 +37,5 @@ pubilc class MyTest extends GuiceyFruitTestCase {
   }
 }
 }}}
+
+The advantage of the annotation is that you can reuse a single module class with multiple test cases
