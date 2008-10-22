@@ -1,0 +1,39 @@
+#labels Featured
+GuiceyFruit supports Guicey Testing by allowing you to derive from a JUnit3 base class, GuiceyFruitTestCase and then have your test case injected.
+
+You can associate the Guice Module(s) to be used by your test case using the following rules
+
+ * annotate your test class with the @Configuration annotation which takes the Module class as a parameter
+ * if no annotation is specified then guiceyfruit will look for an inner class called Configuration implementing Module
+ * specify the *org.guiceyfruit.modules* system property a space separated list of modules
+
+So you can either use the class naming convention, or use an annotation to denote which module to use.
+
+For example
+  
+
+{{{
+// lets specify an exact module
+@Configuration(MyModule.class)
+pubilc class MyTest extends GuiceyFruitTestCase {
+  @Inject
+  Cheese cheese;
+
+  public void testSomething() {...}
+}
+}}}
+
+
+{{{
+// lets use the inner class
+pubilc class MyTest extends GuiceyFruitTestCase {
+  @Inject
+  Cheese cheese;
+
+  public void testSomething() {...}
+
+  static class Configuration extends AbstractModule {
+   // Guice module goes here ...
+  }
+}
+}}}
