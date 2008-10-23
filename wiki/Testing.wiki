@@ -1,5 +1,7 @@
 #labels Featured
-GuiceyFruit supports Guicey Testing by allowing you to derive from a JUnit3 base class, GuiceyFruitTestCase and then have your test case injected.
+GuiceyFruit supports Guicey Testing by allowing you to inject your dependencies using Guice along with support for JSR 250, Spring, EJB3 or [JNDI] if you require.
+
+You perform injections using the usual *@Inject* annotation from Guice or using JSR 250 annotations like *@PostConstruct*, *@PreDestroy* and *@Resource*.
 
 You can associate the Guice Module(s) to be used by your test case using the following rules
 
@@ -7,7 +9,7 @@ You can associate the Guice Module(s) to be used by your test case using the fol
  * if no annotation is specified then guiceyfruit will look for an inner class called Configuration implementing Module
  * specify the *org.guiceyfruit.modules* system property a space separated list of modules which is useful for reusing a test case with a different module
 
-So typically you can either use the class naming convention, or use an annotation to denote which module to use 
+So you can either use the class naming convention, or use an annotation to denote which module to use. The advantage of the annotation is that you can reuse a single module class with multiple test cases.
 
 For example using an explicit annotation
 
@@ -38,7 +40,36 @@ pubilc class MyTest extends GuiceyFruitTestCase {
 }
 }}}
 
-The advantage of the annotation is that you can reuse a single module class with multiple test cases
+
+== JUnit3 ==
+
+To support JUnit3 you just derive from GuiceyTest case as shown in the examples above or this example below which shows JSR 250 injection.
+
+{{{
+@Configuration(Jsr250Module.class)
+pubilc class MyTest extends GuiceyFruitTestCase {
+
+  @Resource
+  Cheese cheese;
+
+  public void testSomething() {...}
+}
+}}}
+
+== JUnit4 ==
+
+For JUnit4 support you just need to add the @RunWith annotation as shown
+
+{{{
+@RunWith(GuiceyJUnit4.class)
+@Configuration(EdamModule.class)
+public class AnnotationTest {
+    @Inject
+    Cheese cheese;
+
+    @Test
+    public void testSomething() {...}
+}}}}
 
 === Overloading the Guice Module from Maven ===
 
