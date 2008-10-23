@@ -1,0 +1,29 @@
+#labels Featured
+GuiceyFruit supports pluggable Lifecycle support. This means your beans or POJOs can be notified when they have completed being injected, or when they are being destroyed (if they are within a Scope like Singleton, Session, Request or [Testing TestScope]) such that there is a clear point when the scope goes away).
+
+The simplest way to work with lifecycles is to use JSR 250 the standard annotations used in EJB3 and Spring.
+
+{{{
+public class MyBean {
+
+  @PostConstruct
+  public void start() {...}
+
+  @PreDestroy
+  public void stop() {...}
+}
+}}}
+
+The above MyBean will have its start() method called after it has been injected. If the bean is created in a scope which is closed; such as Singleton scope when the Injector is closed - then the stop() method is invoked.
+
+== Enabling JSR 250 ==
+
+To enable the JSR 250 lifecycle support you need to add the *Jsr250Module to your injector.
+
+This has the additional benefit of supporting @Resource injection using any JNDI provider such as the [JNDI Guicey JNDI]
+
+== Enabling Spring ==
+
+Spring supports InitializingBean and DisposableBean interfaces on its beans for lifecycle. Its quite common that spring related libraries use either JSR 250 or these Spring interfaces.
+
+To enable the Spring lifecycles, just add the *SpringModule* to your injector.
