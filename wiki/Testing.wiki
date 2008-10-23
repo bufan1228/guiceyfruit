@@ -43,7 +43,18 @@ pubilc class MyTest extends GuiceyTestCase {
 
 == JUnit3 ==
 
-To support JUnit3 you just derive from GuiceyTest case as shown in the examples above or this example below which shows JSR 250 injection.
+To support [http://junit.org/ JUnit3] you first add the maven dependency to your pom.xml
+
+{{{
+    <dependency>
+      <groupId>org.guiceyfruit</groupId>
+      <artifactId>guiceyfruit-junit3</artifactId>
+      <version>${guiceyfruit-version}</version>
+      <scope>test</scope>
+    </dependency>
+}}}
+
+Then you just derive from *GuiceyTestCase* case as shown in the examples above or this example below which shows JSR 250 injection.
 
 {{{
 @Configuration(Jsr250Module.class)
@@ -58,7 +69,18 @@ pubilc class MyTest extends GuiceyTestCase {
 
 == JUnit4 ==
 
-For [http://junit.org/ JUnit4] support you just need to add the @RunWith annotation as shown
+For [http://junit.org/ JUnit4] you first add the maven dependency to your pom.xml
+
+{{{
+    <dependency>
+      <groupId>org.guiceyfruit</groupId>
+      <artifactId>guiceyfruit-junit4</artifactId>
+      <version>${guiceyfruit-version}</version>
+      <scope>test</scope>
+    </dependency>
+}}}
+
+Then you just need to add the *@RunWith(GuiceyJUnit4.class)* annotation as shown
 
 {{{
 @RunWith(GuiceyJUnit4.class)
@@ -74,7 +96,18 @@ public class AnnotationTest {
 
 == TestNG ==
 
-For [http://testng.org TestNG] support you need to derive from the GuiceyTestCase class as shown
+For [http://testng.org TestNG] you first add the maven dependency to your pom.xml
+
+{{{
+    <dependency>
+      <groupId>org.guiceyfruit</groupId>
+      <artifactId>guiceyfruit-testng</artifactId>
+      <version>${guiceyfruit-version}</version>
+      <scope>test</scope>
+    </dependency>
+}}}
+
+Then you need to derive from the *GuiceyTestCase* class as shown
 
 {{{
 @Configuration(MyModule.class)
