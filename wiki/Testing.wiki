@@ -119,7 +119,18 @@ public class AnnotationTest extends GuiceyTestCase {
     public void testSomething() {...}
 }
 }}}
-=== Overloading the Guice Module from Maven ===
+
+== Lifecycles ==
+
+Guicey Testing supports all of the [Lifecycles] such as for JSR250/EJB3/Spring.
+
+To properly use closing lifecycles, such as @PreDestroy or Spring's DisposableBean you need to use a scope which is then destroyed.
+
+You can use Singleton scope in tests, or use the *@TestScoped* annotation to ensure that your bean is properly destroyed after each test method is run.
+
+Note that creating objects without associating them with a scope that can be closed will not close your objects.
+
+== Overloading the Guice Module from Maven ==
 
 If you configure your pom.xml so that system properties can be passed in from the command line such as 
 
