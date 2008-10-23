@@ -5,8 +5,8 @@ You perform injections using the usual *@Inject* annotation from Guice or using 
 
 You can associate the Guice Module(s) to be used by your test case using the following rules
 
- * annotate your test class with the @Configuration annotation which takes the Module class as a parameter
- * if no annotation is specified then guiceyfruit will look for an inner class called Configuration implementing Module
+ * annotate your test class with the @UseModule annotation which takes the Module class as a parameter
+ * if no annotation is specified then guiceyfruit will look for an inner class called TestModule implementing Module
  * specify the *org.guiceyfruit.modules* system property a space separated list of modules which is useful for reusing a test case with a different module
 
 So you can either use the class naming convention, or use an annotation to denote which module to use. The advantage of the annotation is that you can reuse a single module class with multiple test cases.
@@ -15,7 +15,7 @@ For example using an explicit annotation
 
 {{{
 // lets specify an exact module
-@Configuration(MyModule.class)
+@UseModule(MyModule.class)
 pubilc class MyTest extends GuiceyTestCase {
   @Inject
   Cheese cheese;
@@ -34,7 +34,7 @@ pubilc class MyTest extends GuiceyTestCase {
 
   public void testSomething() {...}
 
-  static class Configuration extends AbstractModule {
+  public static class TestModule extends AbstractModule {
    // Guice module goes here ...
   }
 }
@@ -57,7 +57,7 @@ To support [http://junit.org/ JUnit3] you first add the maven dependency to your
 Then you just derive from *GuiceyTestCase* case as shown in the examples above or this example below which shows JSR 250 injection.
 
 {{{
-@Configuration(Jsr250Module.class)
+@UseModule(Jsr250Module.class)
 pubilc class MyTest extends GuiceyTestCase {
 
   @Resource
@@ -84,7 +84,7 @@ Then you just need to add the *@RunWith(GuiceyJUnit4.class)* annotation as shown
 
 {{{
 @RunWith(GuiceyJUnit4.class)
-@Configuration(EdamModule.class)
+@UseModule(MyModule.class)
 public class AnnotationTest {
     @Inject
     Cheese cheese;
@@ -110,7 +110,7 @@ For [http://testng.org TestNG] you first add the maven dependency to your pom.xm
 Then you need to derive from the *GuiceyTestCase* class as shown
 
 {{{
-@Configuration(MyModule.class)
+@UseModule(MyModule.class)
 public class AnnotationTest extends GuiceyTestCase {
     @Inject
     Cheese cheese;
