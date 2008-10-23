@@ -16,7 +16,7 @@ For example using an explicit annotation
 {{{
 // lets specify an exact module
 @Configuration(MyModule.class)
-pubilc class MyTest extends GuiceyFruitTestCase {
+pubilc class MyTest extends GuiceyTestCase {
   @Inject
   Cheese cheese;
 
@@ -28,7 +28,7 @@ or using the naming convention
 
 {{{
 // lets use the inner class
-pubilc class MyTest extends GuiceyFruitTestCase {
+pubilc class MyTest extends GuiceyTestCase {
   @Inject
   Cheese cheese;
 
@@ -47,7 +47,7 @@ To support JUnit3 you just derive from GuiceyTest case as shown in the examples 
 
 {{{
 @Configuration(Jsr250Module.class)
-pubilc class MyTest extends GuiceyFruitTestCase {
+pubilc class MyTest extends GuiceyTestCase {
 
   @Resource
   Cheese cheese;
@@ -58,7 +58,7 @@ pubilc class MyTest extends GuiceyFruitTestCase {
 
 == JUnit4 ==
 
-For JUnit4 support you just need to add the @RunWith annotation as shown
+For [http://junit.org/ JUnit4] support you just need to add the @RunWith annotation as shown
 
 {{{
 @RunWith(GuiceyJUnit4.class)
@@ -69,8 +69,23 @@ public class AnnotationTest {
 
     @Test
     public void testSomething() {...}
+}
 }}}
 
+== TestNG ==
+
+For [http://testng.org TestNG] support you need to derive from the GuiceyTestCase class as shown
+
+{{{
+@Configuration(MyModule.class)
+public class AnnotationTest extends GuiceyTestCase {
+    @Inject
+    Cheese cheese;
+
+    @Test
+    public void testSomething() {...}
+}
+}}}
 === Overloading the Guice Module from Maven ===
 
 If you configure your pom.xml so that system properties can be passed in from the command line such as 
