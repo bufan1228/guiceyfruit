@@ -122,7 +122,7 @@ public class AnnotationTest extends GuiceyTestCase {
 
 == Lifecycles ==
 
-Guicey Testing supports all of the [Lifecycles] such as for JSR250/EJB3/Spring.
+Guicey Testing supports all of the [Lifecycle Lifecycles] such as for JSR250/EJB3/Spring.
 
 To properly use closing lifecycles, such as @PreDestroy or Spring's DisposableBean you need to use a scope which is then destroyed.
 
