@@ -39,3 +39,34 @@ pubilc class MyTest extends GuiceyFruitTestCase {
 }}}
 
 The advantage of the annotation is that you can reuse a single module class with multiple test cases
+
+=== Overloading the Guice Module from Maven ===
+
+If you configure your pom.xml so that system properties can be passed in from the command line such as 
+
+{{{
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <systemProperties>
+             <property>
+              <name>org.guiceyfruit.modules</name>
+              <value>${org.guiceyfruit.modules}</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+}}}
+
+Then when running tests you can overload the Guice module you want to use for injecting into your test case as follows.
+
+{{{
+cd guiceyfruit-junit3
+mvn test -Dtest=NamingConventionTest -Dorg.guiceyfruit.modules=org.guiceyfruit.testing.junit3.example.EdamModule
+}}}
+
+This should make the test fail (as a different Cheese is injected). You can check that the test works by using the default module by running
+
+{{{
+mvn test -Dtest=NamingConventionTest -Dorg.guiceyfruit.modules=
+}}}
