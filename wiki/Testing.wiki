@@ -120,13 +120,18 @@ public class AnnotationTest extends GuiceyTestCase {
 }
 }}}
 
-== Lifecycles ==
+== Scopes and Lifecycles ==
 
 Guicey Testing supports all of the [Lifecycle Lifecycles] such as for JSR250/EJB3/Spring.
 
 To properly use closing lifecycles, such as @PreDestroy or Spring's DisposableBean you need to use a scope which is then destroyed.
 
-You can use Singleton scope in tests, or use the *@TestScoped* annotation to ensure that your bean is properly destroyed after each test method is run.
+The following scopes are supported in test cases
+
+|| Scope annotation || Description |
+| @Singleton | objects stay around across all tests within the same JVM. The close is invokved by default using a JVM shutdown hook - unless the testing framework has a hook we can use |
+| @ClassScoped | the object stays around until all of the test methods are completed in the current test class - it is then closed |
+| @TestScoped | the object stays around until the test method is completed and its then closed |
 
 Note that creating objects without associating them with a scope that can be closed will not close your objects.
 
