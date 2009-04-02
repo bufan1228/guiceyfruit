@@ -6,7 +6,8 @@
   <versioning>
     <versions>
       <version>2.0-SNAPSHOT</version>
+      <version>2.0-beta-5</version>
     </versions>
-    <lastUpdated>20090402114614</lastUpdated>
+    <lastUpdated>20090402144253</lastUpdated>
   </versioning>
 </metadata>
