@@ -1,4 +1,4 @@
-#labels Featured
+#labels Deprecated
 The following Guice patches have been applied to the GuiceyFruit build of Guice
 
  * [http://code.google.com/p/google-guice/issues/detail?id=78 78] for constructor interceptors to be able to support lifecycles
