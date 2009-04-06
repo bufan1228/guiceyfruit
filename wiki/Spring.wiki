@@ -1,0 +1,20 @@
+as of 2.0-beta-6 or later, GuiceyFruit supports the use of Spring injection annotations. If you have some existing code which is using a combination of JSR250 and Spring annontations you can let GuiceyFruit inject your beans using the Guice module mechanism.
+
+For example a bean with the following combination of @Autowired and @Resource would be injected by GuiceyFruit...
+
+{{{
+public class MyBean {
+  @Autowired
+  SomeDto someDto;
+
+  @Resource
+  DataSource customerDataSource;
+}}}
+
+You just need to ensure you add the SpringModule into your Guice injector. For example
+
+{{{
+Injector injector = Guice.createInjector(new SpringModule(), new Jsr250Module(), new MyModule());
+}}}
+
+This also supports the [Lifecycle] support from JSR 250 as well as invoking the Spring InitializingBean or DisposableBean interfaces
