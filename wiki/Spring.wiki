@@ -32,7 +32,7 @@ This also supports the [Lifecycle] support from JSR 250 as well as invoking the 
 If you use [Maven] you just need to add a dependency on *guiceyfruit-spring* (see more details on the [Maven] page)
 
 So add the following to your repositories section
-{{
+{{{
   <repositories>
     <repository>
       <id>guiceyfruit.release</id>
