@@ -1,4 +1,7 @@
-as of 2.0-beta-6 or later, GuiceyFruit supports the use of Spring injection annotations. If you have some existing code which is using a combination of JSR250 and Spring annontations you can let GuiceyFruit inject your beans using the Guice module mechanism.
+#labels Featured
+as of 2.0-beta-6 or later, GuiceyFruit supports the use of Spring injection annotations (e.g. *@Autowired*) along with Spring lifecycle interfaces (*InitializingBean*, *DisposableBean*). 
+
+If you have some existing code which is using a combination of JSR250 and Spring annontations you can let GuiceyFruit inject your beans using the Guice module mechanism.
 
 For example a bean with the following combination of @Autowired and @Resource would be injected by GuiceyFruit...
 
