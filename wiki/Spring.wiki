@@ -17,7 +17,12 @@ public class MyBean {
 You just need to ensure you add the SpringModule into your Guice injector. For example
 
 {{{
-Injector injector = Guice.createInjector(new SpringModule(), new Jsr250Module(), new MyModule());
+Injector injector = Guice.createInjector(new SpringModule(), new Jsr250Module(), 
+  new AbsractModule() {
+    public void configure() {
+       ... 
+    }
+  });
 }}}
 
 This also supports the [Lifecycle] support from JSR 250 as well as invoking the Spring InitializingBean or DisposableBean interfaces
