@@ -17,7 +17,7 @@ public class MyBean {
 You just need to ensure you add the SpringModule into your Guice injector. For example
 
 {{{
-Injector injector = Guice.createInjector(new SpringModule(), new Jsr250Module(), 
+Injector injector = Guice.createInjector(new SpringModule(), 
   new AbsractModule() {
     public void configure() {
        ... 
@@ -26,6 +26,79 @@ Injector injector = Guice.createInjector(new SpringModule(), new Jsr250Module(),
 }}}
 
 This also supports the [Lifecycle] support from JSR 250 as well as invoking the Spring InitializingBean or DisposableBean interfaces
+
+== Using @Qualifier ==
+
+You can use the @Qualifier annotation with @Autowired to choose which instance gets injected in the usual Spring way. The difference is that @Qualifier is not annotated with the Guice @BindingAnnotation (unfortunately!), so instead we map @Qualifier annotations to @Named annotations in Guice.
+
+So your bean could look like this
+
+{{{
+public class MyBean {
+  @Autowired
+  @Qualifier("foo")
+  SomeDto someDto;
+}}}
+
+You can then bind some implementation like this
+
+{{{
+Injector injector = Guice.createInjector(new SpringModule(), 
+  new AbsractModule() {
+    public void configure() {
+       bind(Key.get(MyBean.class, Names.named("foo")); 
+    }
+  });
+}}}
+
+Or you can use the helper method in GuiceyFruitModule to simplify that code a little
+
+{{{
+Injector injector = Guice.createInjector(new SpringModule(), 
+  new GuiceyFruitModule() {
+    public void configure() {
+       bind(MyBean.class, "foo"); 
+    }
+  });
+}}}
+
+
+== Custom Qualifier Annotations ==
+
+Spring allows you to create your own qualifier annotations which are themselves annotated with @Qualifier. These are quite like Guice's annotations which are annotated with @BindingAnnotation.
+
+To use these with GuiceyFruit just make sure you also annotate the qualifier annotation with the *@BindingAnnotation*
+
+For example 
+
+{{{
+  @Target({ ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE })
+  @Retention(RetentionPolicy.RUNTIME)
+  @Qualifier
+  @BindingAnnotation
+  public static @interface TestQualifier {
+  }
+}}}
+
+Then you can use this in a bean
+
+{{{
+public class MyBean {
+  @Autowired
+  @TestQualifier
+  SomeDto someDto;
+}}}
+
+You can then bind some implementation like this
+
+{{{
+Injector injector = Guice.createInjector(new SpringModule(), 
+  new GuiceyFruitModule() {
+    public void configure() {
+       bind(MyBean.class, TestQualifier.class); 
+    }
+  });
+}}}
 
 == Dependencies ==
 
