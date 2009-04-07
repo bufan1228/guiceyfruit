@@ -6,8 +6,8 @@ You can also use [Maven] to use GuiceyFruit without downloading a binary distrib
 
 == Releases ==
 
-|| *Version* ||
-|| [http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/2.0-beta-5/ 2.0-beta-5] ||
+|| *Version* || *Issues* ||
+|| [http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/2.0-beta-5/ 2.0-beta-5] || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3AMilestone-2.0-beta-5 Issues] ||
 
 == Next Release ==
 
