@@ -1,3 +1,4 @@
+#labels Featured
 The following injection annotations are supported in GuiceyFruit from 2.0-beta-6 onwards
 
 || *Module* || *Annotation* || Description ||
