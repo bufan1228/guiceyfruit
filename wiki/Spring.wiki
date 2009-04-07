@@ -65,7 +65,7 @@ Injector injector = Guice.createInjector(new SpringModule(),
 
 == Custom Qualifier Annotations ==
 
-Spring allows you to create your own qualifier annotations which are themselves annotated with @Qualifier. These are quite like Guice's annotations which are annotated with @BindingAnnotation.
+Spring allows you to create your own qualifier annotations which are themselves annotated with @Qualifier. These are quite like Guice's binding annotations which are annotated with @BindingAnnotation.
 
 To use these with GuiceyFruit just make sure you also annotate the qualifier annotation with the *@BindingAnnotation*
 
