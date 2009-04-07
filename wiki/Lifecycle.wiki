@@ -34,10 +34,11 @@ public class MyBean {
 or this
 
 {{{
-@Singleton
-public void configure() {
-  bind(MyBean.class).in(Singleton.class);
-}
+Guice.createInjector(new AbstractModule() {
+  public void configure() {
+    bind(MyBean.class).in(Singleton.class);
+  }
+});
 }}}
 
 Then if the singleton scope is closed as follows
