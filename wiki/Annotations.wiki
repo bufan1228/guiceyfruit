@@ -1,0 +1,6 @@
+The following injection annotations are supported in GuiceyFruit from 2.0-beta-6 onwards
+
+|| *Annotation* || Description ||
+|| @Resource || Binds a field/parameter value to an item in [JNDI] defined in JSR 250 ||
+|| @PostConstruct || A post construction callback method to validate optional injection points are valid. Defined in [Lifecycle] and JSR 250 ||
+|| @PreDestroy || A hook for closing resources when the singleton or a custom Scope in Guice is closed via the {{{ Injectors.close() }}} method. Part of the [Lifecycle] support from JSR 250 ||
