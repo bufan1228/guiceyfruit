@@ -1,6 +1,8 @@
 GuiceyFruit  supports a number of extentions to [http://code.google.com/p/google-guice/ Guice] such as support for
 
-* [Annotations] from JSR 250, [Spring], EJB3 etc
-* [Maven] support
-* [Testing]
-* [JNDI]
+ * [Annotations] from JSR 250, [Spring], EJB3 etc
+ * [Maven] support
+ * [Testing]
+ * [JNDI]
+
+For more information please see the [http://code.google.com/p/guiceyfruit home page]
