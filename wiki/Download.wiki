@@ -1,0 +1,13 @@
+The distributions of GuiceyFruit are available here
+
+ * http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/
+
+== Releases ==
+
+|| *Version* ||
+|| [http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/2.0-beta-5/ 2.0-beta-5] ||
+
+== Next Release ||
+
+|| *Version* || *Issues * ||
+|| 2.0-beta-6 || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3A2.0-beta-6 Issues] ||
