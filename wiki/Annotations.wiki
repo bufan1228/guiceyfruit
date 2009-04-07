@@ -3,6 +3,6 @@ The following injection annotations are supported in GuiceyFruit from 2.0-beta-6
 || *Module* || *Annotation* || Description ||
 || JSR 250 from guiceyfruit-core || @Resource || Binds a field/parameter value to an item in [JNDI] or named bindings in Guice ||
 || || @PostConstruct || A post construction callback method to validate optional injection points are valid. See [Lifecycle] ||
-||| | @PreDestroy || A hook for closing resources when the singleton or a custom Scope in Guice is closed via the {{{ Injectors.close() }}} method. See [Lifecycle] ||
+|| || @PreDestroy || A hook for closing resources when the singleton or a custom Scope in Guice is closed via the {{{ Injectors.close() }}} method. See [Lifecycle] ||
 || [Spring] via guiceyfruit-spring || @Autowired || Binds a field/parameter value to an item using its type as the key ||
 || || @NoAutowire || A binding annotation which excludes this Guice binding from being used in an @Autowired match ||
