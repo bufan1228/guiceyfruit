@@ -2,9 +2,10 @@
 The following injection annotations are supported in GuiceyFruit from 2.0-beta-6 onwards
 
 || *Module* || *Annotation* || Description ||
-|| JSR 250 from guiceyfruit-core || @PostConstruct || A post construction callback method to validate optional injection points are valid. See [Lifecycle] ||
+|| JSR 250 from *guiceyfruit-core* || @PostConstruct || A post construction callback method to validate optional injection points are valid. See [Lifecycle] ||
 || || @PreDestroy || A hook for closing resources when the singleton or a custom Scope in Guice is closed via the {{{ Injectors.close() }}} method. See [Lifecycle] ||
 || || @Resource || Binds a field/parameter value to an item in [JNDI] or named bindings in Guice ||
-|| [Spring] via guiceyfruit-spring || @Autowired || Binds a field/parameter value to an item using its type as the key. The value can be an array, collection or map (with string keys) to bind to all of the available values of a certain type ||
+|| [Spring] via *guiceyfruit-spring* || @Autowired || Binds a field/parameter value to an item using its type as the key. The value can be an array, collection or map (with string keys) to bind to all of the available values of a certain type ||
 || || @NoAutowire || A binding annotation which excludes this Guice binding from being used in an @Autowired match ||
 || || @Qualifier || Allows you to annotate an injection point with a named dependency which is then resolved to a @Named binding in Guice. Or you can annotate your own annotations with @Qualifier and with Guice's @BindingAnnotation to associate with a binding or provides method. For more details see [Spring] ||
+|| JPA from *guiceyfruit-jpa* || @PersistenceContext || Used to inject a JPA EntityManager ||
