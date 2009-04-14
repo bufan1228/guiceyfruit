@@ -1,4 +1,4 @@
-The distributions of GuiceyFruit are available here
+The distributions of [http://code.google.com/p/guiceyfruit GuiceyFruit] are available here
 
  * http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/
 
