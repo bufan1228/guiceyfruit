@@ -1,4 +1,4 @@
-GuiceyFruit  supports a number of extentions to [http://code.google.com/p/google-guice/ Guice] such as support for
+[http://code.google.com/p/guiceyfruit GuiceyFruit]  supports a number of extentions to [http://code.google.com/p/google-guice/ Guice] such as support for
 
  * [Annotations] from JSR 250, [Spring], EJB3 etc
  * [Maven] support
