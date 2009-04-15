@@ -9,3 +9,9 @@ The following injection annotations are supported in GuiceyFruit from 2.0-beta-6
 || || @NoAutowire || A binding annotation which excludes this Guice binding from being used in an @Autowired match ||
 || || @Qualifier || Allows you to annotate an injection point with a named dependency which is then resolved to a @Named binding in Guice. Or you can annotate your own annotations with @Qualifier and with Guice's @BindingAnnotation to associate with a binding or provides method. For more details see [Spring] ||
 || JPA from *guiceyfruit-jpa* || @PersistenceContext || Used to inject a JPA EntityManager ||
+
+== Limitations ==
+
+Currently due to the Guice restriction that @Inject must be used on all constructors we can only use injection annotations like @Resource and @Autowired on fields and methods; not on constructors.
+
+We may try patch Guice to remove this restriction in future versions of GuiceyFruit
