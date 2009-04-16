@@ -1,5 +1,6 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.guiceyfruit</groupId>
   <artifactId>parent</artifactId>
@@ -9,10 +10,43 @@
   <name>GuiceyFruit Framework</name>
   <url>http://guiceyfruit.googlecode.com/</url>
 
+  <properties>
+    <!-- allow it to be overloaded to specify a test module to override -->
+    <!-- see: http://code.google.com/p/guiceyfruit/wiki/Testing -->
+    <org.guiceyfruit.modules/>
+
+    <!-- versions -->
+    <felix-version>1.4.1</felix-version>
+
+    <!--<guice-version>2.0-beta-6</guice-version>-->
+    <guice-version>2.0-SNAPSHOT</guice-version>
+    <!--
+    <version>2.0-beta-6</version>
+    -->
+
+    <!-- OSGi bundles properties -->
+    <guiceyfruit.osgi.import.pkg>!javax.xml.bind.annotation.adapters,*</guiceyfruit.osgi.import.pkg>
+    <guiceyfruit.osgi.activator></guiceyfruit.osgi.activator>
+    <guiceyfruit.osgi.private.pkg>!*</guiceyfruit.osgi.private.pkg>
+    <guiceyfruit.osgi.export>${guiceyfruit.osgi.export.pkg};${guiceyfruit.osgi.version}</guiceyfruit.osgi.export>
+    <guiceyfruit.osgi.version>version=${project.version}</guiceyfruit.osgi.version>
+    <guiceyfruit.osgi.split.pkg>-split-package:=first</guiceyfruit.osgi.split.pkg>
+    <guiceyfruit.osgi.import>${guiceyfruit.osgi.import.pkg}</guiceyfruit.osgi.import>
+    <guiceyfruit.osgi.symbolic.name>${groupId}.${artifactId}</guiceyfruit.osgi.symbolic.name>
+    <guiceyfruit.osgi.exclude.dependencies>true</guiceyfruit.osgi.exclude.dependencies>
+
+  </properties>
+
   <modules>
-    <module>guice</module>
     <module>guiceyfruit-core</module>
+    <module>guiceyfruit-jpa</module>
+    <module>guiceyfruit-junit3</module>
+    <module>guiceyfruit-junit4</module>
+    <module>guiceyfruit-testng</module>
+    <module>guiceyfruit-spring</module>
     <module>guiceyfruit-spring-converter</module>
+    <module>guiceyfruit-osgi-test</module>
+    <module>guiceyfruit</module>
   </modules>
 
   <repositories>
@@ -32,12 +66,12 @@
   <distributionManagement>
     <repository>
       <id>guiceyfruit-release</id>
-      <name>GuicyFruit Maven repository of releases</name>
+      <name>GuiceyFruit Maven repository of releases</name>
       <url>dav:https://guiceyfruit.googlecode.com/svn/repo/releases</url>
     </repository>
     <snapshotRepository>
       <id>guiceyfruit-snapshot</id>
-      <name>GuicyFruit Maven repository of snapshots</name>
+      <name>GuiceyFruit Maven repository of snapshots</name>
       <url>dav:https://guiceyfruit.googlecode.com/svn/repo/snapshots</url>
       <uniqueVersion>false</uniqueVersion>
     </snapshotRepository>
@@ -52,17 +86,57 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-jpa</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-junit3</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-junit4</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-testng</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-spring</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guiceyfruit</groupId>
+        <artifactId>guiceyfruit-spring-converter</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>3.8.1</version>
-        <scope>test</scope>
       </dependency>
-        <dependency>
-          <groupId>org.hamcrest</groupId>
-          <artifactId>hamcrest-all</artifactId>
-          <version>1.2-dev1</version>
-          <scope>test</scope>
-        </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-all</artifactId>
+        <version>1.2-dev1</version>
+      </dependency>
       <dependency>
         <groupId>org.easymock</groupId>
         <artifactId>easymock</artifactId>
@@ -86,15 +160,13 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
-        <version>2.0.6</version>
-        <scope>test</scope>
+        <version>2.5.6</version>
       </dependency>
 
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-beans</artifactId>
-        <version>2.0.6</version>
-        <scope>test</scope>
+        <version>2.5.6</version>
       </dependency>
 
       <dependency>
@@ -174,10 +246,38 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <!--forkMode>pertest</forkMode-->
+          <forkMode>once</forkMode>
           <childDelegation>false</childDelegation>
           <useFile>true</useFile>
           <failIfNoTests>false</failIfNoTests>
+
+          <systemProperties>
+            <property>
+              <name>org.guiceyfruit.modules</name>
+              <value>${org.guiceyfruit.modules}</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>${felix-version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <excludeDependencies>${guiceyfruit.osgi.exclude.dependencies}</excludeDependencies>
+          <instructions>
+            <Bundle-Name>${artifactId}</Bundle-Name>
+            <Bundle-SymbolicName>${guiceyfruit.osgi.symbolic.name}</Bundle-SymbolicName>
+            <Bundle-Activator>${guiceyfruit.osgi.activator}</Bundle-Activator>
+            <Export-Package>${guiceyfruit.osgi.export}</Export-Package>
+            <Import-Package>${guiceyfruit.osgi.import}</Import-Package>
+            <Private-Package>${guiceyfruit.osgi.private.pkg}</Private-Package>
+            <Implementation-Title>GuiceyFruit</Implementation-Title>
+            <Implementation-Version>${project.version}</Implementation-Version>
+          </instructions>
         </configuration>
       </plugin>
     </plugins>
