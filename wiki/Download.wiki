@@ -7,10 +7,11 @@ You can also use [Maven] to use GuiceyFruit without downloading a binary distrib
 == Releases ==
 
 || *Download Version* || *Issues fixed in this release* ||
+|| [http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/2.0-beta-7/ 2.0-beta-7] || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3AMilestone-2.0-beta-7 Issues] ||
 || [http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/2.0-beta-6/ 2.0-beta-6] || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3A2.0-beta-6 Issues] ||
 || [http://guiceyfruit.googlecode.com/svn/repo/releases/org/guiceyfruit/guiceyfruit/2.0-beta-5/ 2.0-beta-5] || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3AMilestone-2.0-beta-5 Issues] ||
 
 == Next Release ==
 
 || *Version* || *Issues * ||
-|| 2.0-beta-7 || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3A2.0-beta-7 Issues] ||
+|| 2.0-beta-8 || [http://code.google.com/p/guiceyfruit/issues/list?can=1&q=label%3A2.0-beta-8 Issues] ||
